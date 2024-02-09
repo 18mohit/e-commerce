@@ -1,0 +1,58 @@
+[
+    {
+        "id":1,
+        "name":"NANCHAKU",
+        "price":"299",
+        "image":"https://tse1.mm.bing.net/th?id=OIP.YLp7nlVsMuWxrUlqwEpBbQHaIM&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":2,
+        "name":"SAI",
+        "price":"1499",
+        "image":"https://tse3.mm.bing.net/th?id=OIP.23XdVF11OBdZZsvSCD2TzAHaHa&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":3,
+        "name":"TONFA",
+        "price":"999",
+        "image":"https://tse4.mm.bing.net/th?id=OIP.y_xkbKzJribzLwmpVrRh8gHaEe&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":4,
+        "name":"STICK",
+        "price":"699",
+        "image":"https://tse3.mm.bing.net/th?id=OIP.cApLSE2-3BSGwOrO9-Yo0QHaHa&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":5,
+        "name":"KAMA",
+        "price":"1999",
+        "image":"https://tse2.mm.bing.net/th?id=OIP.04xeWc0HI63e7TPnBbLQtQAAAA&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":6,
+        "name":"NI-BO",
+        "price":"1099",
+        "image":"https://tse2.mm.bing.net/th?id=OIP.tm2v_gDi0Ize5R5x1jTNYAAAAA&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":7,
+        "name":"SOMORAI",
+        "price":"3999",
+        "image":"https://tse4.mm.bing.net/th?id=OIP.ZFVbj4sAMPVc2ikTwUZ7MgHaE8&pid=Api&P=0&h=220"
+    },
+
+    {
+        "id":8,     
+        "name":"NINJA STAR",
+        "price":"1499",
+        "image":"https://tse1.mm.bing.net/th?id=OIP.3Skz-aFWycOGB91DcxeJLgHaHb&pid=Api&P=0&h=220"
+    }
+    
+]

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="D:\WEB\img-3.jpg" />
+    <link rel="stylesheet" href="EXAM FORM.CSS" />
+    <title>EXAM FORM</title>
+  </head>
+  <body>
+    <h1>KOUSHUKU KARATE</h1>
+    <hr />
+    <div class="main">
+      <img src="img-2.jpg" alt="img-2" />
+      <form>
+        <table class="table">
+          <h2 class="h2">Exam Form</h2>
+
+          <tr>
+            <td>First Name</td>
+            <td>
+              <input type="text" placeholder="Enter Your First Name" required />
+            </td>
+            <td>Last Name</td>
+            <td>
+              <input type="text" placeholder="Enter Your Last Name" required />
+            </td>
+          </tr>
+
+          <tr>
+            <td>DOB</td>
+            <td>
+              <input
+                id="birthdate"
+                type="date"
+                oninput="calculateAge()"
+                required
+              />
+            </td>
+            <td>Age</td>
+            <td><input id="age" type="number" readonly /></td>
+          </tr>
+
+          <tr>
+            <td>Exam Date</td>
+            <td><input type="date" placeholder="Enter Next Exam Date" /></td>
+            <td>Last Exam Date</td>
+            <td>
+              <input type="date" placeholder="Enter your Last Exam Date" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Mobile No.</td>
+            <td>
+              <input type="number" placeholder="Enter Your number" required />
+            </td>
+            <td>WhatsApp No.</td>
+            <td><input type="number" placeholder="WhatsApp No." /></td>
+          </tr>
+
+          <tr>
+            <td>Corrent Belt</td>
+            <td>
+              <select id="currentBelt" oninput="updateNextBelt()">
+                <option value="SELECT" selected>SELECT BELT</option>
+                <option value="white">WHITE</option>
+                <option value="YELLOW">YELLOW</option>
+                <option value="ORANGE">ORANGE</option>
+                <option value="GREEN">GREEN</option>
+                <option value="BLUE">BLUE</option>
+                <option value="PURPLE">PURPLE</option>
+                <option value="BROWN-1">BROWN-1</option>
+                <option value="BROWN-2">BROWN-2</option>
+                <option value="BROWN-3">BROWN-3</option>
+              </select>
+            </td>
+            <td>Next Belt</td>
+            <td><input type="text" id="nextBelt" readonly /></td>
+          </tr>
+
+          <tr>
+            <td>Height</td>
+            <td><input type="number" placeholder="cm" required /></td>
+            <td>Weight</td>
+            <td><input type="number" placeholder="kg" required /></td>
+          </tr>
+
+          <tr>
+            <td>Gender:</td>
+            <td><input type="radio" name="gender" value="male" />male</td>
+            <td><input type="radio" name="gender" value="female" />female</td>
+          </tr>
+
+          <tr>
+            <td>
+              <button type="submit" value="submit">Submit</button>
+            </td>
+            <td>
+              <button type="reset" value="Reset">Reset</button>
+            </td>
+            <td>
+              <a href="file:///D:/WEB/Welcome.html#" target="_blank">
+                <button type="button" value="home">HOME</button>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+      // JavaScript code for automatic age calculation
+
+      // Function to calculate age
+      function calculateAge() {
+        // Get the birthdate value from the input field
+        var birthdateString = document.getElementById("birthdate").value;
+
+        // Create a Date object from the birthdate string
+        var birthdate = new Date(birthdateString);
+
+        // Create a new Date object for the current date
+        var today = new Date();
+
+        // Calculate the age
+        var age =
+          today.getFullYear() -
+          birthdate.getFullYear() -
+          (today.getMonth() < birthdate.getMonth() ||
+          (today.getMonth() === birthdate.getMonth() &&
+            today.getDate() < birthdate.getDate())
+            ? 1
+            : 0);
+
+        // Set the value of the age input box
+        document.getElementById("age").value = age;
+      }
+
+      function updateNextBelt() {
+        // Get the value from the currentBelt input
+        var currentBeltValue = document.getElementById("currentBelt").value;
+
+        // Check the value and set the nextBelt accordingly (case-insensitive)
+        if (currentBeltValue.toLowerCase() === "white") {
+          document.getElementById("nextBelt").value = "YELLOW";
+        } else if (currentBeltValue.toLowerCase() === "yellow") {
+          document.getElementById("nextBelt").value = "ORANGE";
+        } else if (currentBeltValue.toLowerCase() === "orange") {
+          document.getElementById("nextBelt").value = "GREEN";
+        } else if (currentBeltValue.toLowerCase() === "green") {
+          document.getElementById("nextBelt").value = "BLUE";
+        } else if (currentBeltValue.toLowerCase() === "blue") {
+          document.getElementById("nextBelt").value = "PURPLE";
+        } else if (currentBeltValue.toLowerCase() === "purple") {
+          document.getElementById("nextBelt").value = "BROWN-1";
+        } else if (currentBeltValue.toLowerCase() === "brown-1") {
+          document.getElementById("nextBelt").value = "BROWN-2";
+        } else if (currentBeltValue.toLowerCase() === "brown-2") {
+          document.getElementById("nextBelt").value = "BROWN-3";
+        } else if (currentBeltValue.toLowerCase() === "brown-3") {
+          document.getElementById("nextBelt").value = "BLACK";
+        } else {
+          // Default to setting nextBelt to the value of currentBelt
+          document.getElementById("nextBelt").value = currentBeltValue;
+        }
+      }
+    </script>
+  </body>
+</html>

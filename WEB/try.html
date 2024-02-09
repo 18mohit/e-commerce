@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1st cart  -->
+        <div class="image">
+            <img id=1 src="https://tse1.mm.bing.net/th?id=OIP.YLp7nlVsMuWxrUlqwEpBbQHaIM&pid=Api&P=0&h=220" alt="image2">
+        </div>
+        <div class="name">NANCHAKU</div>
+        <div class="price">
+            299
+        </div>
+        <div class="quantity">
+            <samp class="min"><</samp>
+            <samp>1</samp>
+            <samp class="max">></samp>
+        </div>
+<!-- 2nd cart -->
+        <div class="image">
+            <img id=2 src="https://tse3.mm.bing.net/th?id=OIP.23XdVF11OBdZZsvSCD2TzAHaHa&pid=Api&P=0&h=220">
+        </div>
+        <div class="name">SAI</div>
+        <div class="price">
+            1499
+        </div>
+        <div class="quantity">
+            <samp class="min"><</samp>
+            <samp>1</samp>
+            <samp class="max">></samp>
+        </div>
+<!-- 3nd cart -->
+        <!-- <div class="image">
+            <img id=3 src="https://tse4.mm.bing.net/th?id=OIP.y_xkbKzJribzLwmpVrRh8gHaEe&pid=Api&P=0&h=220" alt="image2">
+        </div>
+        <div class="name">TONFA</div>
+        <div class="price">
+            999
+        </div>
+        <div class="quantity">
+            <samp class="min"><</samp>
+            <samp>1</samp>
+            <samp class="max">></samp>
+        </div> -->
+<!-- 4th cart -->
+<!-- <div class="image">
+    <img id=4 src="https://tse3.mm.bing.net/th?id=OIP.cApLSE2-3BSGwOrO9-Yo0QHaHa&pid=Api&P=0&h=220" alt="image2">
+</div>
+<div class="name">STICK</div>
+<div class="price">
+    699
+</div>
+<div class="quantity">
+    <samp class="min"><</samp>
+    <samp>1</samp>
+    <samp class="max">></samp>
+</div> -->
+<!-- 5th cart -->
+<!-- <div class="image">
+    <img id=5 src="https://tse2.mm.bing.net/th?id=OIP.04xeWc0HI63e7TPnBbLQtQAAAA&pid=Api&P=0&h=220" alt="image2">
+</div>
+<div class="name">KAMA</div>
+<div class="price">
+    1999
+</div>
+<div class="quantity">
+    <samp class="min"><</samp>
+    <samp>1</samp>
+    <samp class="max">></samp>
+</div> -->
+<!-- 6th cart -->
+ <!-- <div class="image">
+    <img id=6 src="https://tse2.mm.bing.net/th?id=OIP.tm2v_gDi0Ize5R5x1jTNYAAAAA&pid=Api&P=0&h=220" alt="image2">
+</div>
+<div class="name">NI-BO</div>
+<div class="price">
+    1099
+</div>
+<div class="quantity">
+    <samp class="min"><</samp>
+    <samp>1</samp>
+    <samp class="max">></samp>
+</div>  -->
+<!-- 7th cart -->
+<!-- <div class="image">
+    <img id=7 src="https://tse4.mm.bing.net/th?id=OIP.ZFVbj4sAMPVc2ikTwUZ7MgHaE8&pid=Api&P=0&h=220" alt="image2">
+</div>
+<div class="name">SOMORAI</div>
+<div class="price">
+    3999
+</div>
+<div class="quantity">
+    <samp class="min"><</samp>
+    <samp>1</samp>
+    <samp class="max">></samp>
+</div> -->
+<!-- 8th cart -->
+ <!-- <div class="image">
+    <img id=8 src="https://tse1.mm.bing.net/th?id=OIP.3Skz-aFWycOGB91DcxeJLgHaHb&pid=Api&P=0&h=220" alt="image2">
+</div>
+<div class="name">NINJA STAR</div>
+<div class="price">
+    1499
+</div>
+<div class="quantity">
+    <samp class="min"><</samp>
+    <samp>1</samp>
+    <samp class="max">></samp>
+</div> -->
+</body>
+
+<script>
+       const cartItemsMap = new Map();
+
+// Function to handle the "Add to Cart" button click
+function addToCart(event) {
+    const selectedItem = event.currentTarget.parentElement;
+    const itemName = selectedItem.querySelector('.uniform-item, .uniform-item2').textContent;
+    const itemPriceString = parseFloat(selectedItem.querySelector('.rs1, .rs2, .rs3, .rs4').textContent);
+    const itemPrice = parseFloat(itemPriceString) || 0;
+    const itemImageSrc = selectedItem.querySelector('img').src;
+
+    // Check if the item is already in the cart
+if (cartItemsMap.has(itemName)) {
+    // Increment quantity if item is already in the cart
+    const cartItem = cartItemsMap.get(itemName);
+    const quantityValue = cartItem.querySelector('.quantity-value');
+    let currentQuantity = parseInt(quantityValue.textContent);            
+    currentQuantity += 1;
+    quantityValue.textContent = currentQuantity;
+
+    // Update total amount when quantity changes
+    updateTotalAmount();
+} else {
+    // Create cart item elements dynamically
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+    <div class="image">
+        <img src="${itemImageSrc}" alt="${itemName}">
+    </div>
+    <div class="name">${itemName}</div>
+    <div class="price">${itemPrice.toFixed(2)}</div>
+    <div class="quantity">
+        <samp class="min"> < </samp>
+        <samp class="quantity-value">1</samp>
+        <samp class="max">></samp>
+    </div>
+`;
+
+
+    // Append the cart item to the cart
+    const cartContainer = document.getElementById('cart');
+    cartContainer.appendChild(cartItem);
+
+    // Update the cart count
+    const cartCount = document.querySelector('.cart1');
+    cartCount.textContent = parseInt(cartCount.textContent) + 1;
+
+    // Position the newly added item in alternating rows
+    const cartItems = document.querySelectorAll('.cart-item');
+    const isEven = cartItems.length % 2 === 0;
+
+    if (isEven) {
+        cartItem.classList.add('bottom-row');
+    } else {
+        cartItem.classList.add('top-row');
+    }
+
+    // Add event listeners to the quantity controls
+    const minButton = cartItem.querySelector('.min');
+    const maxButton = cartItem.querySelector('.max');
+    const quantityValue = cartItem.querySelector('.quantity-value');
+
+    minButton.addEventListener('click', () => updateQuantity(-1));
+    maxButton.addEventListener('click', () => updateQuantity(1));
+
+    // Add the cart item to the map
+    cartItemsMap.set(itemName, cartItem);
+
+    function updateQuantity(change) {
+        let currentQuantity = parseInt(quantityValue.textContent);
+        currentQuantity += change;
+
+        if (currentQuantity < 1) {
+        // If quantity is 0, remove the item from the cart and map
+        cartContainer.removeChild(cartItem);
+        cartItemsMap.delete(itemName);
+
+        // Update the cart count
+        cartCount.textContent = parseInt(cartCount.textContent) - 1;
+
+        // Update the total amount when an item is removed
+        updateTotalAmount();
+        } else {
+        quantityValue.textContent = currentQuantity;
+
+        // Update the item price based on the new quantity
+        const itemUnitPrice = parseFloat(itemPriceString);
+        const newTotalPrice = itemUnitPrice * currentQuantity;
+        cartItem.querySelector('.price').innerText = `${newTotalPrice.toFixed(2)}`;
+
+        // Update total amount when quantity changes
+        updateTotalAmount();
+        }
+    }
+}
+}
+
+function updateTotalAmount() {
+    let totalAmount = 0;
+    const cartItems = document.querySelectorAll('.cart-item');
+
+    cartItems.forEach(cartItem => {
+        const quantity = parseInt(cartItem.querySelector('.quantity samp').innerText);
+        const unitPriceText = cartItem.querySelector('.price').innerText;
+        const unitPrice = parseFloat(unitPriceText.split(' ')[1]); // Extract numeric part
+        totalAmount += quantity * unitPrice;
+    });
+
+    // Display the updated total amount
+    const totalAmountElement = document.getElementById('total-amount');
+    totalAmountElement.innerText = `Total Amount: RS.${totalAmount.toFixed(2)}`;
+}
+
+// Trigger the initial update when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    updateTotalAmount();
+});
+
+
+function showWeapons() {
+    let weapons = document.querySelector('.weapons');
+    let weaponsitem = document.querySelector('.weapons-item');
+
+    weapons.addEventListener("click", () => {
+        if (weaponsitem.style.display === 'none' || weaponsitem.style.display === '') {
+            weaponsitem.style.display = 'block';
+        } else {
+            weaponsitem.style.display = 'none';
+        }
+    });
+}
+
+// Call the function to enable the behavior
+showWeapons();
+
+// Add click event listeners to the "Add to Cart" buttons
+const addToCartButtons = document.querySelectorAll('.buy, .buy2, .buy3, .buy4, .buy5, .buy6, .buy7, .buy8,.buy9,.buy10,.buy11,.buy12,.buy13,.buy14,.buy15,.buy16,.buy17');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+</script>
+</html>
